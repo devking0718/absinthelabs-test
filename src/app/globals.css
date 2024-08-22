@@ -1,0 +1,45 @@
+@import '@radix-ui/themes/styles.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swiper-wrapper {
+    width: 100%;
+    height: max-content !important;
+    padding-bottom: 64px !important;
+    -webkit-transition-timing-function: linear !important;
+    transition-timing-function: linear !important;
+    position: relative;
+}
+
+.swiper-pagination-bullet {
+    background: #4F46E5;
+}
+
+.swiper-pagination-bullet-active {
+    background: #4F46E5 !important;
+}
+
+::-webkit-scrollbar {
+    /* Customize the scrollbar width */
+    background-color: #16181A;
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    /* Customize the scrollbar track */
+    background-color: #111315;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+    /* Customize the scrollbar thumb */
+    background-color: #16181A;
+    border-radius: 50px;
+}
+
+.react-multi-carousel-list {
+    overflow-x: scroll;
+    padding-bottom: 24px;
+}
