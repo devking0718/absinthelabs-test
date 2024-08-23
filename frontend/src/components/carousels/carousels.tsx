@@ -2,11 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { Badge, Box, Button, Grid, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { useMainContext } from "@/context/mainContext";
-import { ActionCard, BadgeCard } from "../cards/cards";
+import { ActionCard, BadgeCard, CommunityBadgeCard } from "../cards/cards";
 import { ProgressBar } from "../progress/progress";
 import { CommunityBadgeData } from "@/utils/datas";
-import { EffectCoverflow } from "swiper/modules";
+import { EffectCoverflow, Grid as GridModule } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import 'swiper/css';
+import 'swiper/css/grid';
+import 'swiper/css/pagination';
 
 export default function BadgeCarousel(props: any) {
     const { setCurrentIndex, currentIndex } = useMainContext();
@@ -39,9 +42,9 @@ export default function BadgeCarousel(props: any) {
                     style={{ width: props.width, height: props.height, margin: props.margin }}
                 >
                     <Button className="h-72 bg-elevation-elevation3-dark rounded-3xl me-3 cursor-pointer" onClick={() => { handleSlideChange(currentSlide - 1 >= 0 ? currentSlide - 1 : badges.length - 1); setCurrentIndex(currentSlide - 1 >= 0 ? currentSlide - 1 : badges.length - 1) }}><Image src="/images/icons/left.svg" width={24} height={24} alt="arrow" /></Button>
-                    
+
                     <Swiper
-                    className="hidden md:block"
+                        className="hidden md:block"
                         effect={'coverflow'}
                         slidesPerView={'auto'}
                         centeredSlides={true}
@@ -52,7 +55,7 @@ export default function BadgeCarousel(props: any) {
                         breakpoints={{
                             640: {
                                 slidesPerView: 1,
-                                spaceBetween:200,
+                                spaceBetween: 200,
                             },
                             768: {
                                 slidesPerView: 4,
@@ -108,4 +111,41 @@ export default function BadgeCarousel(props: any) {
             </Box>
         </Box>
     );
+}
+
+export const CommunityBadgeCarousel = () => {
+    return (
+        <Box className="p-4">
+            <Swiper
+                slidesPerView={2}
+                grid={{
+                    rows: 2,
+                }}
+                breakpoints={{
+                    640: {
+                        slidesPerView: 2,
+                        grid: {
+                            rows: 2
+                        }
+                    },
+                    768: {
+                        slidesPerView: 4,
+                    },
+                    1024: {
+                        slidesPerView: 7.5,
+                        grid: {
+                            rows: 1
+                        }
+                    },
+                }}
+                modules={[GridModule]}
+            >
+                {CommunityBadgeData.map((item, index) => (
+                    <SwiperSlide key={index}>
+                        <CommunityBadgeCard index={item.key} isActive={item.isActive} logo={item.logo} title={item.title} actions={item.actions} value={item.value} />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </Box>
+    )
 }
