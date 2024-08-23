@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import '@radix-ui/themes/styles.css';
-import { Theme } from "@radix-ui/themes";
+import { Box, Theme } from "@radix-ui/themes";
 import { NextThemeProvider } from "@/components/layouts/ThemeProvider";
 import Navbar from "@/components/layouts/navbar";
 import Footer from "@/components/layouts/footer";
@@ -23,14 +23,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>        
+      <body>
         <ApolloContextProvider>
-          <MainContextProvider className={inter.className}>
+          <MainContextProvider>
             <NextThemeProvider>
               <Theme>
-                <Navbar />
-                {children}
-                <Footer />
+                <Box className={inter.className}>
+                  <Navbar />
+                  {children}
+                  <Footer />
+                </Box>
               </Theme>
             </NextThemeProvider>
           </MainContextProvider>

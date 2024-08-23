@@ -29,7 +29,7 @@ const config: Config = {
         },
         text: {
           primary: {
-            dark: '#f7f78',
+            dark: '#f7f7f8',
             light: '#0c0f0e'
           },
           secondary: {

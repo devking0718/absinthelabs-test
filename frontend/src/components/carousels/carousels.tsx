@@ -10,6 +10,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/grid';
 import 'swiper/css/pagination';
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
 
 export default function BadgeCarousel(props: any) {
     const { setCurrentIndex, currentIndex } = useMainContext();
@@ -88,12 +90,12 @@ export default function BadgeCarousel(props: any) {
             </Box>
             <Box>
                 <Box className="flex md:items-center md:justify-between flex-col md:flex-row">
-                    <Text className="text-sm mb-2"><strong>How to Earn:</strong> Complete the actions for the badge, no specific order needed.</Text>
+                    <Box className="text-sm mb-2"><Text className="font-semibold text-text-primary-dark">How to Earn: </Text><Text className="font-normal text-text-secondary-dark">Complete the actions for the badge, no specific order needed.</Text></Box>
                     <Box className="flex items-center md:justify-end mb-2">
                         {CommunityBadgeData[currentIndex].actions.length > 0 && (
-                            <Badge radius="full" className="w-1/2 md:w-auto flex justify-center bg-elevation-elevation3-dark text-text-secondary-dark px-2 py-1 text-xs font-medium me-2">{CommunityBadgeData[currentIndex].actions.filter(action => action.isComplete).length}/{CommunityBadgeData[currentIndex].actions.length} Completed</Badge>
+                            <Badge radius="full" className="w-1/2 md:w-auto flex justify-center bg-elevation-elevation3-dark text-text-secondary-dark px-2 py-1 text-xs font-medium me-2"><Text className={inter.className}>{CommunityBadgeData[currentIndex].actions.filter(action => action.isComplete).length}/{CommunityBadgeData[currentIndex].actions.length} Completed</Text></Badge>
                         )}
-                        <Badge radius="full" className="w-1/2 md:w-auto flex justify-center bg-primary-disabled-dark bg-opacity-20 text-primary-hover-dark px-2 py-1 text-xs font-medium">Total Earnings: {CommunityBadgeData[currentIndex].total_earning.toLocaleString()}</Badge>
+                        <Badge radius="full" className="w-1/2 md:w-auto flex justify-center bg-primary-disabled-dark bg-opacity-20 text-primary-hover-dark px-2 py-1 text-xs font-medium"><Text className={inter.className}>Total Earnings: {CommunityBadgeData[currentIndex].total_earning.toLocaleString()}</Text></Badge>
                     </Box>
                 </Box>
             </Box>

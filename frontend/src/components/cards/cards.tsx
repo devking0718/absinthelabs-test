@@ -1,13 +1,15 @@
 import { useMainContext } from "@/context/mainContext"
 import { Badge, Box, Grid, Skeleton, Text } from "@radix-ui/themes"
 import Image from "next/image"
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
 
 export const ActionCard = ({ isComplete, description }: { isComplete?: boolean, description: string }) => {
     return (
         <Box className="rounded-xl overflow-hidden bg-elevation-elevation1-dark mb-4 select-none">
             <Box className="flex items-center justify-between bg-elevation-elevation3-dark px-4 border-b-elevation-background-dark border-b">
-                <Text className="py-3 text-xs font-medium text-text-secondary-dark">Action</Text>
-                {isComplete && <Badge radius="full" className="bg-status-success-elevation1-dark text-status-success-main-dark px-2 py-1 text-xs font-medium">Completed</Badge>}
+                <Text className="py-3 font-medium text-text-secondary-dark text-sm">Action</Text>
+                {isComplete && <Badge radius="full" className="bg-status-success-elevation1-dark text-status-success-main-dark px-2 py-1 text-xs font-medium"><Text className={inter.className}>Completed</Text></Badge>}
             </Box>
             <Box className="pt-2 px-4 pb-4 bg-elevation-elevation2-dark text-text-secondary-dark text-sm select-none">
                 {description}
@@ -45,7 +47,7 @@ export const BadgeCard = ({ index, isActive, logo, actions, title, value, detail
                 </Box>
 
             ) : (
-                <Box onClick={() => setCurrentIndex(index)}>
+                <Box className="opacity-35" onClick={() => setCurrentIndex(index)}>
 
                     <Box minHeight="178px" className={`mb-2 flex items-center max-w-full md:max-w-44 justify-center carousel-item mx-auto  cursor-pointer select-none text-center relative snap-start rounded-xl overflow-hidden bg-elevation-elevation3-dark border border-transparent`}>
                         <Box className="py-6 text-center ">

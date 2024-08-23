@@ -7,6 +7,8 @@ import { Item } from "@radix-ui/themes/src/components/checkbox-group.primitive.j
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useSearchParams } from 'next/navigation'
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -24,16 +26,16 @@ export default function Navbar() {
                         </nav>
                     </Box>
                     <Box className="flex items-center justify-end">
-                        <Button variant="soft" className="text-sm font-semibold cursor-pointer text-text-secondary-dark bg-elevation-elevation2-dark rounded-full hidden md:flex border border-solid border-primary-hover-dark px-4 py-2 me-2">How It Works</Button>
+                        <Button variant="soft" className={`text-sm font-semibold cursor-pointer text-text-secondary-dark bg-elevation-elevation2-dark rounded-full hidden md:flex border border-solid border-primary-hover-dark px-4 py-2 me-2 ${inter.className}`}>How It Works</Button>
                         <DropdownMenu.Root>
                             <DropdownMenu.Trigger>
-                                <Button className="bg-elevation-elevation3-dark rounded-xl cursor-pointer">
+                                <Button className={`bg-elevation-elevation3-dark rounded-xl cursor-pointer ${inter.className}`}>
                                     <Image src="/images/avatar.png" className="rounded-full" width={18} height={18} alt="icon" /> bongo.eth
                                 </Button>
                             </DropdownMenu.Trigger>
                             <DropdownMenu.Content variant="soft" className="bg-elevation-elevation3-dark border-0">
-                                <DropdownMenu.Item className="text-sm font-semibold text-center cursor-pointer hover:bg-elevation-elevation1-dark focus:bg-elevation-elevation1-dark"><Image src="/images/avatar.png" className="rounded-full" width={18} height={18} alt="icon" /> bongo.eth</DropdownMenu.Item>
-                                <DropdownMenu.Item className="font-semibold text-sm text-center cursor-pointer hover:bg-elevation-elevation1-dark focus:bg-elevation-elevation1-dark">SignOut <Image src="/images/icons/signout.svg" width={18} height={18} alt="icon" /></DropdownMenu.Item>
+                                <DropdownMenu.Item className={`text-sm font-semibold text-center cursor-pointer hover:bg-elevation-elevation1-dark focus:bg-elevation-elevation1-dark ${inter.className}`}><Image src="/images/avatar.png" className="rounded-full" width={18} height={18} alt="icon" /> bongo.eth</DropdownMenu.Item>
+                                <DropdownMenu.Item className={`font-semibold text-sm text-center cursor-pointer hover:bg-elevation-elevation1-dark focus:bg-elevation-elevation1-dark ${inter.className}`}>SignOut <Image src="/images/icons/signout.svg" width={18} height={18} alt="icon" /></DropdownMenu.Item>
                             </DropdownMenu.Content>
                         </DropdownMenu.Root>
                         {/* Mobile Menu */}
