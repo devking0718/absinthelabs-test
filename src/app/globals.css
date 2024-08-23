@@ -43,3 +43,21 @@
     overflow-x: scroll;
     padding-bottom: 24px;
 }
+
+.swiper-wrapper {
+    padding-bottom: 0 !important;
+}
+
+.swiper-grid-column>.swiper-wrapper {
+    flex-wrap: wrap;
+    flex-direction: row !important;
+
+}
+
+
+@media only screen and (min-width: 600px) {
+    .swiper.swiper-initialized.swiper-horizontal.swiper-backface-hidden {
+        padding-bottom: 24px;
+        overflow-x: scroll !important;
+    }
+  }
