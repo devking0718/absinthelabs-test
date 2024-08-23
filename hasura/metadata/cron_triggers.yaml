@@ -1,5 +1,5 @@
 - name: push-data
-  webhook: '{{EXPRESS_API_URL}}/push-data'
+  webhook: 'https://absinthelabs-test-backend.onrender.com/push-data'
   schedule: '* * * * *'
   include_in_metadata: true
   payload: {}

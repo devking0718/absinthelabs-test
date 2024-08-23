@@ -1,7 +1,7 @@
 version: 3
-endpoint: http://localhost:8080
+endpoint: https://known-sunbeam-41.hasura.app
 metadata_directory: metadata
-admin_secret: ${HASURA_ADMIN_SECRET}
+admin_secret: 3f124uWkzlwitYxUIhBUUWi5W6dj0ZFFzcBa7neS2X44RapFa2Ey8XpiADUUufe3
 actions:
   kind: synchronous
-  handler_webhook_baseurl: http://localhost:3000
+  handler_webhook_baseurl: https://absinthelabs-test-backend.onrender.com
