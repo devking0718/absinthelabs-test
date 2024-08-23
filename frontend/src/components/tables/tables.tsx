@@ -69,7 +69,7 @@ export const ActivityTable = () => {
             {(isLoading || loading) ? (
                 <Table.Body>
                     {Array.from({ length: 6 }, (_, index) => (
-                        <Table.Row className=" border-y-elevation-background-dark border-y">
+                        <Table.Row className=" border-y-elevation-background-dark border-y" key={index}>
                             <Table.RowHeaderCell className={`shadow-none ${index % 2 === 0 ? 'bg-elevation-elevation1-dark' : 'bg-elevation-elevation2-dark'}`}>
                                 <Box className="flex items-center"><Image src="/images/icons/transaction.svg" width={16} height={16} alt="icon" className="pe-1 blur-sm" /><Text className="blur-sm">Transaction</Text></Box>
                             </Table.RowHeaderCell>
