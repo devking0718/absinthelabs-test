@@ -1,12 +1,11 @@
 
 import { Box } from "@radix-ui/themes";
+import { redirect } from "next/navigation";
 
 
 export default function DashboardPage() {
-  
-  return (
-    <Box className="bg-elevation-background-dark py-10 text-center">
-      Welcome
-    </Box>
-  );
+
+  redirect("/badges");
+
+  return null;
 }

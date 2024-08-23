@@ -1,5 +1,3 @@
-import Carousel from "react-spring-3d-carousel";
-import { config } from "react-spring";
 import { useEffect, useRef, useState } from "react";
 import { Badge, Box, Button, Grid, Text } from "@radix-ui/themes";
 import Image from "next/image";
@@ -7,7 +5,6 @@ import { useMainContext } from "@/context/mainContext";
 import { ActionCard, BadgeCard } from "../cards/cards";
 import { ProgressBar } from "../progress/progress";
 import { CommunityBadgeData } from "@/utils/datas";
-import { useDrag } from '@use-gesture/react';
 import { EffectCoverflow } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -42,11 +39,11 @@ export default function BadgeCarousel(props: any) {
                     style={{ width: props.width, height: props.height, margin: props.margin }}
                 >
                     <Button className="h-72 bg-elevation-elevation3-dark rounded-3xl me-3 cursor-pointer" onClick={() => { handleSlideChange(currentSlide - 1 >= 0 ? currentSlide - 1 : badges.length - 1); setCurrentIndex(currentSlide - 1 >= 0 ? currentSlide - 1 : badges.length - 1) }}><Image src="/images/icons/left.svg" width={24} height={24} alt="arrow" /></Button>
-
+                    
                     <Swiper
+                    className="hidden md:block"
                         effect={'coverflow'}
                         slidesPerView={'auto'}
-                        spaceBetween={-30}
                         centeredSlides={true}
                         freeMode={true}
                         pagination={{
@@ -55,6 +52,7 @@ export default function BadgeCarousel(props: any) {
                         breakpoints={{
                             640: {
                                 slidesPerView: 1,
+                                spaceBetween:200,
                             },
                             768: {
                                 slidesPerView: 4,
@@ -75,8 +73,7 @@ export default function BadgeCarousel(props: any) {
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
                     >
                         {CommunityBadgeData.map((item, index) => (
-                            <SwiperSlide className="mx-auto"
-                            >
+                            <SwiperSlide className="mx-auto" key={index}>
                                 <BadgeCard index={item.key} isActive={item.isActive} logo={item.logo} title={item.title} actions={item.actions} value={item.value} details={item.detail} />
                             </SwiperSlide>
                         ))}
@@ -100,12 +97,12 @@ export default function BadgeCarousel(props: any) {
             <Box>
                 <Grid columns={{ initial: '1', md: `${CommunityBadgeData[currentIndex].actions.length}` }} gap="3" width="auto">
                     {(CommunityBadgeData[currentIndex].actions).map((item, index) => (
-                        <ActionCard isComplete={item.isComplete} description={item.content} />
+                        <ActionCard key={index} isComplete={item.isComplete} description={item.content} />
                     ))}
                 </Grid>
                 <Grid columns={`${CommunityBadgeData[currentIndex].actions.length}`} gap="3" width="auto">
                     {(CommunityBadgeData[currentIndex].actions).map((item, index) => (
-                        <ProgressBar isComplete={item.isComplete} />
+                        <ProgressBar key={index} isComplete={item.isComplete} />
                     ))}
                 </Grid>
             </Box>

@@ -19,26 +19,26 @@ export default function Navbar() {
                         <div className="mx-2 px-6 bg-white bg-opacity-5 rounded-lg shadow-inset-custom">Logo</div>
                         <nav className="hidden md:flex space-x-4 ps-6">
                             {RouteList.map((item, index) => (
-                                <Link href={item.path} className={`hover:text-secondaryText text-sm font-semibold px-3 ${pathname === item.path && `text-primary-hover-dark`}`}>{item.name}</Link>
+                                <Link key={index} href={item.path} className={`hover:text-secondaryText text-sm font-semibold px-3 ${pathname === item.path && `text-primary-hover-dark`}`}>{item.name}</Link>
                             ))}
                         </nav>
                     </Box>
                     <Box className="flex items-center justify-end">
-                        <Button variant="soft" className="text-sm font-semibold text-text-secondary-dark bg-elevation-elevation2-dark rounded-full hidden md:flex border border-solid border-primary-hover-dark px-4 py-2 me-2">How It Works</Button>
+                        <Button variant="soft" className="text-sm font-semibold cursor-pointer text-text-secondary-dark bg-elevation-elevation2-dark rounded-full hidden md:flex border border-solid border-primary-hover-dark px-4 py-2 me-2">How It Works</Button>
                         <DropdownMenu.Root>
                             <DropdownMenu.Trigger>
-                                <Button className="bg-elevation-elevation3-dark rounded-xl">
+                                <Button className="bg-elevation-elevation3-dark rounded-xl cursor-pointer">
                                     <Image src="/images/avatar.png" className="rounded-full" width={18} height={18} alt="icon" /> bongo.eth
                                 </Button>
                             </DropdownMenu.Trigger>
                             <DropdownMenu.Content variant="soft" className="bg-elevation-elevation3-dark border-0">
-                                <DropdownMenu.Item className="text-sm font-semibold text-center hover:bg-elevation-elevation1-dark focus:bg-elevation-elevation1-dark"><Image src="/images/avatar.png" className="rounded-full" width={18} height={18} alt="icon" /> bongo.eth</DropdownMenu.Item>
-                                <DropdownMenu.Item className="font-semibold text-sm text-center hover:bg-elevation-elevation1-dark focus:bg-elevation-elevation1-dark">SignOut <Image src="/images/icons/signout.svg" width={18} height={18} alt="icon" /></DropdownMenu.Item>
+                                <DropdownMenu.Item className="text-sm font-semibold text-center cursor-pointer hover:bg-elevation-elevation1-dark focus:bg-elevation-elevation1-dark"><Image src="/images/avatar.png" className="rounded-full" width={18} height={18} alt="icon" /> bongo.eth</DropdownMenu.Item>
+                                <DropdownMenu.Item className="font-semibold text-sm text-center cursor-pointer hover:bg-elevation-elevation1-dark focus:bg-elevation-elevation1-dark">SignOut <Image src="/images/icons/signout.svg" width={18} height={18} alt="icon" /></DropdownMenu.Item>
                             </DropdownMenu.Content>
                         </DropdownMenu.Root>
                         {/* Mobile Menu */}
                         <div className="md:hidden">
-                            <Button className="bg-transparent p-0 ms-2" onClick={() => setNavToggle(!navToggle)}><Image src="/images/icons/menu.svg" width={24} height={24} alt="" /></Button>
+                            <Button className="bg-transparent p-0 ms-2 cursor-pointer" onClick={() => setNavToggle(!navToggle)}><Image src="/images/icons/menu.svg" width={24} height={24} alt="" /></Button>
                         </div>
                     </Box>
                 </Box>
@@ -46,7 +46,7 @@ export default function Navbar() {
             <Box className={`bg-elevation-background-dark container mx-auto md:px-8 px-4 mt-6  ${navToggle ? `flex transition duration-1000 ease-in-out` : `hidden transition duration-1000 ease-in-out`}`}>
                 <Box className="flex justify-between items-center flex-wrap p-2 bg-elevation-elevation2-dark rounded-3xl">
                     {RouteList.map((item, index) => (
-                        <Link href={item.path} className={`hover:text-secondaryText text-sm font-semibold p-3 ${pathname === item.path && `text-primary-hover-dark`}`}>{item.name}</Link>
+                        <Link key={index} href={item.path} className={`hover:text-secondaryText text-sm font-semibold p-3 ${pathname === item.path && `text-primary-hover-dark`}`}>{item.name}</Link>
                     ))}
                 </Box>
             </Box>

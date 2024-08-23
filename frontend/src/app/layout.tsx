@@ -7,6 +7,7 @@ import { NextThemeProvider } from "@/components/layouts/ThemeProvider";
 import Navbar from "@/components/layouts/navbar";
 import Footer from "@/components/layouts/footer";
 import { MainContextProvider } from "@/context/mainContext";
+import ApolloContextProvider from "@/context/ApolloContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,16 +23,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <MainContextProvider className={inter.className}>
-          <NextThemeProvider>
-            <Theme>
-              <Navbar />
-              {children}
-              <Footer />
-            </Theme>
-          </NextThemeProvider>
-        </MainContextProvider>
+      <body className={inter.className}>        
+        <ApolloContextProvider>
+          <MainContextProvider className={inter.className}>
+            <NextThemeProvider>
+              <Theme>
+                <Navbar />
+                {children}
+                <Footer />
+              </Theme>
+            </NextThemeProvider>
+          </MainContextProvider>
+
+        </ApolloContextProvider>
       </body>
     </html>
   );
